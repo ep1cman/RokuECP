@@ -97,7 +97,7 @@ public class Roku
 
 			app = app.getNextSibling();
 		}
-
+		connection.disconnect();
 		return output;
 	}
 
