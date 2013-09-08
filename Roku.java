@@ -35,7 +35,6 @@ public class Roku
 		IP = ipAddress;
 		PORT = portNumber;
 		USN = uniqueSerialNumber;
-		socket = new Socket(IP, PORT);
 	}
 
 	public String getIP()  { return IP; }
@@ -44,7 +43,7 @@ public class Roku
 
 	public String getUSN() { return USN; }
 
-	public void reconnect() throws IOException { socket = new Socket(IP, PORT); }
+	public void connect() throws IOException { socket = new Socket(IP, PORT); socket.setTcpNoDelay(true);}
 
 	//Available Keys:
 	//Home,Rev,Fwd,Play,Select,Left,Right,Up,Down,Back,
