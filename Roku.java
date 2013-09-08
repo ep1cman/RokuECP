@@ -28,6 +28,7 @@ public class Roku
 	private int PORT;
 	private String USN;
 	private Socket socket;
+	private long lastSent; //Hack to fix issue where roku stops responding to requests after a few seconds	
 
 	public Roku(String ipAddress, int portNumber, String uniqueSerialNumber) throws IOException
 	{
@@ -59,6 +60,9 @@ public class Roku
 
 	private void send(String data) throws IOException
 	{
+      		if (!socket.isConnected() || socket.isOutputShutdown() || !socket.isBound()) connect();
+    		if (System.currentTimeMillis()-lastSent>2000) connect();
+        	lastSent = System.currentTimeMillis();
 		BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF8"));
 		wr.write(data);
 		wr.flush();
