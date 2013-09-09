@@ -12,11 +12,10 @@ import java.util.ArrayList;
 public class RokuECP
 {
 	//Constants
-	public static final String SEARCHSTRING =
-			"M-SEARCH * HTTP/1.1\r\n" +
-					"ST: roku:ecp\r\n" +
-					"MAN: \"ssdp:discover\"\r\n" +
-					"HOST: 239.255.255.250:1900";
+	public static final String SEARCHSTRING = "M-SEARCH * HTTP/1.1\r\n" +
+						  "ST: roku:ecp\r\n" +
+						  "MAN: \"ssdp:discover\"\r\n" +
+						  "HOST: 239.255.255.250:1900";
 
 	private static SocketAddress multicastGroup;
 	private static MulticastSocket socketMulticast;
